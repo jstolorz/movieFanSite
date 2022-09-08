@@ -15,6 +15,7 @@
     "http-errors": "~1.6.3",
     "mongodb": "^4.9.1",
     "morgan": "~1.9.1",
+    "mysql": "^2.18.1",
     "nodemon": "^2.0.19",
     "passport": "^0.6.0",
     "passport-github": "^1.1.0",
