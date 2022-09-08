@@ -1,11 +1,14 @@
-var express = require('express');
-var router = express.Router();
+const fs = require('fs')
+const express = require('express');
 const passport = require('passport')
 const request = require('request')
 const {use} = require("express/lib/router");
 const {response} = require("express");
 const pgdb = require('../databases/pgdb')
+const multer = require('multer')
 
+const router = express.Router();
+const upload = multer({dest: 'public/files/uploads'})
 const apiKey = '1fb720b97cc13e580c2c35e1138f90f8'
 //const apiKey = '123456789'
 const apiBaseUrl = 'http://api.themoviedb.org/3';
@@ -51,6 +54,17 @@ router.get('/movie/:id',(req, res, next)=>{
         res.render('single-movie',{
             parsedData
         })
+    })
+})
+
+router.get('/upload',(req,res) => {
+    res.render('upload',{})
+})
+
+router.post('/formsub',upload.single('meme'),(req,res) => {
+    const newPath = `public/files/uploads/${req.file.originalname}`
+    fs.rename(req.file.path, newPath, () => {
+        res.json({msg: 'file upload'})
     })
 })
 

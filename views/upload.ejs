@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Movie App </title>
+    <% include head %>
+</head>
+<body>
+
+<% include navbar %>
+
+  <form action="/formsub" method="post" enctype="multipart/form-data">
+      <input type="text" placeholder="filename" name="desc">
+      <input type="file" name="meme"/>
+      <input type="submit" value="submit">
+  </form>
+
+</body>
+</html>
